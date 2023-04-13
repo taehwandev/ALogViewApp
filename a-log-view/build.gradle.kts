@@ -63,6 +63,7 @@ android {
 
 dependencies {
     implementation(libs.kotlin.stdlib)
+    implementation(libs.kotlin.immutable)
     implementation(libs.androidx.core)
     implementation(libs.androidx.appCompat)
     implementation(libs.compose.ui)
