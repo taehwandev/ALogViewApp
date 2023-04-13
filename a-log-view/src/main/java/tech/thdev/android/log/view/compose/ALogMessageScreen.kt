@@ -19,13 +19,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.persistentListOf
 import kotlinx.coroutines.delay
 import tech.thdev.android.log.view.compose.ui.theme.ALogColors
 import tech.thdev.android.log.view.model.ALogItem
 
 @Composable
 internal fun ALogMessageScreen(
-    items: List<ALogItem>,
+    items: ImmutableList<ALogItem>,
 ) {
     val autoScrollDistance by remember { mutableStateOf(30) }
     val scrollState = rememberLazyListState()
@@ -73,7 +75,7 @@ internal fun ALogMessageScreen(
 @Composable
 internal fun PreviewALogMessageScreen() {
     ALogMessageScreen(
-        items = listOf(
+        items = persistentListOf(
             ALogItem(
                 message = "Log",
                 color = ALogColors.INFO,

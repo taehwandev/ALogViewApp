@@ -3,6 +3,9 @@ package tech.thdev.android.log.view
 import android.util.Log
 import androidx.annotation.VisibleForTesting
 import androidx.compose.runtime.mutableStateOf
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.persistentListOf
+import kotlinx.collections.immutable.toPersistentList
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
@@ -29,7 +32,7 @@ class ALogViewViewModel(
     private val dispatcherProvider: ADispatcherProvider,
 ) {
 
-    val logList = MutableStateFlow<List<ALogItem>>(emptyList())
+    val logList = MutableStateFlow<ImmutableList<ALogItem>>(persistentListOf())
 
     val logViewVisible = mutableStateOf(true)
 
@@ -78,7 +81,7 @@ class ALogViewViewModel(
                     .toList()
             }
             .onEach { list ->
-                logList.value = list
+                logList.value = list.toPersistentList()
             }
             .flowOn(dispatcherProvider.main())
 
