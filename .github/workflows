@@ -1,0 +1,2 @@
+- name: Compose Compiler Metrics
+  uses: lhoyong/android-compose-metrics-action@v1
