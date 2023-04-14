@@ -20,4 +20,4 @@ jobs:
       - name: Compose Metrics
         uses: lhoyong/android-compose-metrics-action@v1
         with:
-          directory: 'app' # see sample project app/build.gradle.kts
+          directory: 'compose_metrics' # see sample project app/build.gradle.kts

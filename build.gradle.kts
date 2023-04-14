@@ -12,12 +12,31 @@ buildscript {
 
 allprojects {
     tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-        kotlinOptions.jvmTarget = "1.8"
-
-        kotlinOptions.allWarningsAsErrors = false
-
-        kotlinOptions.freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
-        kotlinOptions.freeCompilerArgs += "-opt-in=kotlin.Experimental"
+        kotlinOptions {
+            jvmTarget = "1.8"
+            allWarningsAsErrors = false
+            val args = mutableListOf(
+                "-opt-in=kotlin.RequiresOptIn",
+                "-opt-in=kotlin.Experimental"
+            )
+            if (project.findProperty("app.enableComposeCompilerReports") == "true") {
+                args.addAll(
+                    listOf(
+                        "-P",
+                        "plugin:androidx.compose.compiler.plugins.kotlin:reportsDestination=" +
+                                project.buildDir.absolutePath + "/compose_metrics"
+                    )
+                )
+                args.addAll(
+                    listOf(
+                        "-P",
+                        "plugin:androidx.compose.compiler.plugins.kotlin:metricsDestination=" +
+                                project.buildDir.absolutePath + "/compose_metrics"
+                    )
+                )
+            }
+            freeCompilerArgs = args
+        }
     }
 }
 
