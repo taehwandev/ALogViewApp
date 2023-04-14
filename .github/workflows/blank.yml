@@ -1,0 +1,23 @@
+name: ALogViewApp
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: set up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          distribution: adopt
+          java-version: 11
+
+      - name: Build
+        run: ./gradlew assembleDebug -Papp.enableComposeCompilerReports=true
+
+      - name: Compose Metrics
+        uses: lhoyong/android-compose-metrics-action@v1
+        with:
+          directory: 'compose_metrics' # see sample project app/build.gradle.kts
