@@ -17,6 +17,7 @@ androidGradlePlugin = "7.4.2"
 ## kotlin
 # https://github.com/JetBrains/kotlin
 kotlin = "1.8.10"
+kotlin-immutable = "0.3.5"
 
 ## Coroutine
 # https://github.com/Kotlin/kotlinx.coroutines
@@ -77,7 +78,7 @@ test-junit5 = "5.8.2"
 [libraries]
 ## Kotlin
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
-
+kotlin-immutable = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version.ref = "kotlin-immutable" }
 ## Coroutines
 coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
 coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }

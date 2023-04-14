@@ -23,6 +23,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Visibility
+import kotlinx.collections.immutable.persistentListOf
 import tech.thdev.android.log.view.R
 import tech.thdev.android.log.view.compose.ui.theme.ALogColors
 import tech.thdev.android.log.view.model.ALogItem
@@ -154,7 +155,7 @@ internal fun PreviewALogScreen() {
         dragEvent = { _, _ -> },
         logMessageView = {
             ALogMessageScreen(
-                items = listOf(
+                items = persistentListOf(
                     ALogItem(
                         message = "Log",
                         color = ALogColors.INFO,
